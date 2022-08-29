@@ -1,5 +1,36 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    height: 100%;
+}
+
+html {
+    height: 100%;
+    /* display: block; */
+}
+
+body {
+    min-height: 100%;
+}
+
 #weatherTitle {
-    font-size: 4rem;
+    font-size: 3rem;
     background-color: aqua;
     font-weight: 600;
 }
+
+/* .searchedCity {
+
+}
+
+.searchedFiveDay {
+    
+} */
+
+/* .previousSearchSection {
+    display: block;
+} */
