@@ -2,36 +2,37 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-  <title>Weather Dashboard</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <title>Weather Dashboard</title>
 </head>
+
 <body>
-    <div id="weatherTitle" class="container-fluid">
-        <header class="col-12 p-2 text-center">Weather Dashboard</header>
+    <div class="container-fluid col-12 p-2 text-center">
+        <h2 id="weatherTitle">Weather Dashboard</h2>
     </div>
-    
-<main class="container">
-  <section class="row">
-    <div class="col-12 col-md-3">
-      <form id="search-Form" class="card p-3 m-3">
-        <input id="q" class="form-control mb-3" />
-        <button id="search" type="submit" class="btn btn-primary mb-3">Search</button>
-        <div id="searched-Cities"></div>
-      </form>
-    </div>
-    <div class="col-12 col-md-9">
-      <div class="card p-3 m-3" id="current">
+    <main class="container">
+        <section class="row">
+            <div class="col-12 col-md-3">
+                <form id="search-Form" class="card p-3 m-3">
+                    <input id="q" class="form-control mb-3" />
+                    <button id="search" type="submit" class="btn btn-primary mb-3 mt-3">Search</button>
+                    <div id="searched-Cities"></div>
+                </form>
+            </div>
+            <div class="col-12 col-md-9 border border-dark">
+                <div class="card p-3 m-3" id="current">
+                    <!-- Current day card will go here, with date, icon, temperature, wind speed, and humidity, AND UV index  -->
 
-      </div>
-      <div id="fiveDay" class="row">
-
-      </div>
-    </div>
-  </section>
-</main>
+                </div>
+                <div id="fiveDay" class="row bg-info">
+                    <!-- 5 day cards will go here, with date, icon, temperature, wind speed, and humidity -->
+                </div>
+            </div>
+        </section>
+    </main>
     <!-- TODO: Create col separated cards to display 5-day forcast info, one card for each, -->
     <!-- associate data ids with content to apply process to changing search parameters -->
     <!-- TODO: Create col separated card to display current city, <p> elements with ids and blank content for each parameter -->
