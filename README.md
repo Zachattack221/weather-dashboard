@@ -1,8 +1,8 @@
 # weather-dashboard
 
 ## Table of Contents
-[Description](#description)
-[Visuals](#visuals)
+1. [Description](#description)
+2. [Visuals](#visuals)
 
 # Description
 [Link to Live Site](placeholder for link)

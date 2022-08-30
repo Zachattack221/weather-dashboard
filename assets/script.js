@@ -43,7 +43,7 @@ var displayWeather = function (data, city) {
     imgEl.width = 90;
     imgEl.height = 90;
     imgEl.alt = icon;
-    imgEl.src = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
+    imgEl.src = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
 
     currentEl.append(h2El);
     currentEl.append(dateEl);
@@ -96,7 +96,7 @@ var displayWeather = function (data, city) {
         imgEl.width = 90;
         imgEl.height = 90;
         imgEl.alt = icon;
-        imgEl.src = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
+        imgEl.src = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
 
         fiveDayEl.append(cardEl);
         cardEl.append(dateEl);
@@ -156,7 +156,7 @@ var getGEO = function (locations) {
 var handleSearch = function (event) {
     event.preventDefault();
     var q = document.querySelector('#q');
-    var geoURL = `http://api.openweathermap.org/geo/1.0/direct?q=${q.value}&appid=${appid}`;
+    var geoURL = `https://api.openweathermap.org/geo/1.0/direct?q=${q.value}&appid=${appid}`;
     fetch(geoURL)
         .then(toJSON)
         .then(getGEO);
@@ -167,7 +167,7 @@ var handleCityClick = function (event) {
     event.preventDefault();
     if (event.target.matches('button')) {
         var q = event.target.textContent;
-        var geoURL = `http://api.openweathermap.org/geo/1.0/direct?q=${q}&appid=${appid}`;
+        var geoURL = `https://api.openweathermap.org/geo/1.0/direct?q=${q}&appid=${appid}`;
         fetch(geoURL)
             .then(toJSON)
             .then(getGEO);
