@@ -1,29 +1,4 @@
-// $('.container').on('click','.submitBtn', function() {
-//     var cityEl = $(this).prev().val();
-//     localStorage.setItem('cityname', cityEl);
-//     var lastSearch = document.createElement('li');
-//     lastSearch.textContent = cityEl;
-//     console.log(cityEl);
-//     $('#previousSearchSection').append(JSON.stringify(cityEl).toUpperCase());
-//     $('.allSearches').addClass('btn-primary btn-lg btn-block');
-
-
-
-// if (p !== null) {
-
-// }
-// console.log(typeof(lastSearch));
-// console.log(JSON.stringify(lastSearch));
-// });
-
-// $('#previousSearchSection').on('click','')
-
-// TODO: button element with previous search needs to be functionally connected to search bar with function
-
-// TODO: create functions that accociate with API key for open weather map
-
-// TODO: remember to convert units to imperial 
-
+// defined most variables in global scope to use in multiple functions
 
 var searchForm = document.querySelector('#search-Form')
 var searchedCities = document.querySelector('#searched-Cities')
@@ -45,8 +20,8 @@ var displayWeather = function (data, city) {
     var icon = data.current.weather[0].icon;
     var wind = data.current.wind_speed;
     var humidity = data.current.humidity;
-    var uv = data.current.uvi;
-  
+    var uv = data.daily[0].uvi;
+
 
     var h2El = document.createElement('h2');
     var tempEl = document.createElement('p');
@@ -55,7 +30,7 @@ var displayWeather = function (data, city) {
     var windEl = document.createElement('p');
     var uvEl = document.createElement('p')
     var imgEl = document.createElement('img');
-var uvSpanEl = document.createElement('span');
+    var uvSpanEl = document.createElement('span');
     currentEl.innerHTML = null;
 
     h2El.textContent = city.name;
@@ -78,31 +53,30 @@ var uvSpanEl = document.createElement('span');
     currentEl.append(humidityEl);
     currentEl.append(uvEl);
     uvEl.append(uvSpanEl);
-    
-// console.log(uv.value);
 
-// if (uv < 3) {
-//     uvSpanEl.className('bg-success rounded');
-// }
+    // set up logic to change UV index display color depending on the value in three ranges
 
-    // if (uvEl.value)
-    //   document.body.appendChild(h2El);
-    //   document.body.appendChild(tempEl);
+    if (uv < 3) {
+        uvSpanEl.classList.add('bg-success', 'rounded', 'p-2');
+    }
+    if (uv > 3 && uv < 7) {
+        uvSpanEl.classList.add('bg-warning', 'rounded', 'p-2');
+    }
+    else {
+        uvSpanEl.classList.add('bg-danger', 'rounded', 'p-2');
+    }
 
-    console.log('DAILY', data.daily.slice(1, 6));
     var fiveDays = data.daily.slice(1, 6);
 
-      fiveDay.innerHTML = null;
+    fiveDay.innerHTML = null;
     for (var day of fiveDays) {
         console.log('DAY', day);
         var date = new Date(day.dt * 1000).toLocaleDateString();
-        // console.log(date);
         var temp = day.temp.day;
-        // console.log(temp);
         var icon = day.weather[0].icon;
         var wind = day.wind_speed;
         var humidity = day.humidity;
-        // var colEl = document.createElement('div');
+
         var cardEl = document.createElement('div');
         var dateEl = document.createElement('p');
         var windEl = document.createElement('p');
@@ -110,7 +84,7 @@ var uvSpanEl = document.createElement('span');
         var tempEL = document.createElement('div');
         var imgEl = document.createElement('img');
 
-        // colEl.className = 'col-12 col-md';
+
         cardEl.className = 'card col-2 col-md p-3 m-3';
 
         dateEl.textContent = 'Date: ' + date;
@@ -130,14 +104,14 @@ var uvSpanEl = document.createElement('span');
         cardEl.append(tempEL);
         tempEL.append(windEl);
         tempEL.append(humidityEl);
-        // $('#current').className('border border-dark')
-        // fiveDayEl.append(colEl);
+
     }
 }
 
+// Function to generate search buttons for each searched city
+
 var displayButtons = function () {
     var cities = JSON.parse(localStorage.getItem('cities')) || [];
-    // var showOnlyThreeCities = cities.slice(cities.length - 3);
     searchedCities.innerHTML = null;
     for (var city of cities) {
         var buttonEl = document.createElement('button');
@@ -160,12 +134,14 @@ var getOneCall = function (city) {
 var saveToLocalStorage = function (city) {
     var cities = JSON.parse(localStorage.getItem('cities')) || [];
     cities.push(city);
-    // how to reduce duplicates then reconvert into 
+    // Reduces duplicates then reconvert into string
     var citySet = Array.from(new Set(cities));
     var data = JSON.stringify(citySet);
     localStorage.setItem('cities', data)
     displayButtons();
 };
+
+// functions below handle API requests via inserting specific parameters as template literals
 
 var getGEO = function (locations) {
     var city = locations[0];
