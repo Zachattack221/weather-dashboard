@@ -15,13 +15,13 @@ var toJSON = function (response) {
 var displayWeather = function (data, city) {
     console.log(data);
 
+    // Setting up all display variables within displayWeather function
 
     var temp = data.current.temp;
     var icon = data.current.weather[0].icon;
     var wind = data.current.wind_speed;
     var humidity = data.current.humidity;
     var uv = data.daily[0].uvi;
-
 
     var h2El = document.createElement('h2');
     var tempEl = document.createElement('p');
@@ -44,6 +44,8 @@ var displayWeather = function (data, city) {
     imgEl.height = 90;
     imgEl.alt = icon;
     imgEl.src = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
+
+// appending created elements to document
 
     currentEl.append(h2El);
     currentEl.append(dateEl);

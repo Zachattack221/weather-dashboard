@@ -10,7 +10,6 @@
 
 html {
     height: 100%;
-    /* display: block; */
 }
 
 body {
@@ -23,14 +22,3 @@ body {
     font-weight: 600;
 }
 
-/* .searchedCity {
-
-}
-
-.searchedFiveDay {
-    
-} */
-
-/* .previousSearchSection {
-    display: block;
-} */
